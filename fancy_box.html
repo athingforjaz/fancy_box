@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fancy box</title>
+    <style>
+        body{
+            background-color: black;
+            color: magenta;
+        }
+        .main{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            height: 400px;
+            width: 400px;
+            box-shadow: 0 0 25px magenta;
+        }
+        div{
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            background-color: white;
+            clear: both;
+        }
+        button{
+            height: 100px;
+            width: 100px;
+            border: 5px solid black,
+
+        }
+    </style>
+
+    <script>
+        function lets_get_fancy() {
+            // document.getElementById("main").innerHTML = "";
+            for(i=0; i<64; i++){
+                document.getElementById("main").innerHTML += '<div onmouseover="fancytime(this)" onmouseout="unfancy(this)"></div>'
+            }
+        }
+        function fancytime(divvy) {
+            fancy_color = '#'+Math.floor(Math.random()*16777215).toString(16);
+            divvy.style.backgroundColor=fancy_color;
+            divvy.style.boxShadow='0 0 15px magenta';
+        }
+        function unfancy(divvy) {
+            divvy.style.boxShadow='0 0 0 magenta'
+        }
+        function unfancy_title(divvy) {
+            divvy.style.backgroundColor='black';
+            divvy.style.boxShadow='0 0 0 magenta'
+        }
+    </script>
+
+</head>
+<body onload="lets_get_fancy()">
+    <h1 onmouseover="fancytime(this)" onmouseout="unfancy_title(this)">Please enjoy this fancy box!</h1>
+    <div class="main" id="main">
+    </div>  
+</body>
+</html>
